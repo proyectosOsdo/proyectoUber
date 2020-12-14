@@ -10,6 +10,7 @@ import { ClientesComponent } from './componentes/clientes/clientes/clientes.comp
 import { ConductoresComponent } from './componentes/conductores/conductores/conductores.component';
 import { VehiculosComponent } from './componentes/vehiculos/vehiculos/vehiculos.component';
 import { PedidosComponent } from './componentes/pedidos/pedidos/pedidos.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PedidosComponent } from './componentes/pedidos/pedidos/pedidos.componen
     ClientesComponent,
     ConductoresComponent,
     VehiculosComponent,
-    PedidosComponent
+    PedidosComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

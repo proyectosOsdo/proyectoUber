@@ -1,16 +1,31 @@
+import { SideBarComponent } from './componentes/navs/side-bar/side-bar.component';
+import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ClientesComponent } from './componentes/clientes/clientes/clientes.component';
+import { ConductoresComponent } from './componentes/conductores/conductores/conductores.component';
+import { VehiculosComponent } from './componentes/vehiculos/vehiculos/vehiculos.component';
+import { PedidosComponent } from './componentes/pedidos/pedidos/pedidos.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SideBarComponent,
+    ClientesComponent,
+    ConductoresComponent,
+    VehiculosComponent,
+    PedidosComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,7 +8,7 @@ import {Component,} from '@angular/core';
 })
 export class AppComponent {
   showFiller = false;
-  title = 'proyectoUberWeb';
+  title = 'Vanes del Valle';
 
   }
 

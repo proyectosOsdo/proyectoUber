@@ -30,10 +30,19 @@ h1.example-app-name {
   flex: 1 0 auto;
 }
 
+.example-toolbar{
+  background-color: #c4b8b9;
+}
+
 mat-sidenav{
-  width: 18%;
+  background-color: #e2e1e1;
+}
+
+mat-sidenav-container{
+  background-color: #e2e1e1;
 }
 
 .icono{
   margin-right: 2px;
+  color: #a62e30;
 }

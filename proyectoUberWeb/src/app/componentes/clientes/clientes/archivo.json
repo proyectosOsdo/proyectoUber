@@ -1,0 +1,87 @@
+{
+  "IdTrxCompuesta": "00000000-0000-0000-0000-000000000000",
+  "IdTipoTransaccion": 1,
+  "IdUnidad": 1,
+  "IdTotem": 69,
+  "IdCajaTotemTurno": 0,
+  "IdCaja": 16,
+  "IdEstadoTransaccion": 30,
+  "Pagada": true,
+  "FechaTransaccion": "2020-12-23T09:40:52.2135251-05:00",
+  "IdUsuario": "15956152",
+  "IdPromocion": 0,
+  "NombrePromocion": "",
+  "IdJornadaPromocion": 0,
+  "IdCliente": 0,
+  "NombreCliente": null,
+  "IdCategoriaCliente": 0,
+  "NroBoleta": 0,
+  "MontoImpuestoEntrada": 3565.31,
+  "ValorEntradaGeneral": 2850,
+  "ValorEntradaSocio": 1000,
+  "puntosPorPeso": 1.0,
+  "TransaccionesComponentes": [
+    {
+      "IdTransaccion": 0,
+      "FechaContable": "2020-12-15T00:00:00",
+      "IdTipoEntrada": 1,
+      "MontoPagado": 1500.0,
+      "CantidadEntradas": 1,
+      "IdsEntradas": "",
+      "ValorEntrada": 1500,
+      "IdVenta": 0
+    }
+  ],
+  "Pago": {
+    "idTipoPago": 1,
+    "VoucherTransbank": "",
+    "TbkAbrTarjeta": "",
+    "TbkCodAutoriz": "0",
+    "TbkCodComercio": "0",
+    "TbkCodRespuesta": "00",
+    "TbkFechaTrx": "20201223",
+    "TbkHoraTrx": "094052",
+    "TbkGlosa": "",
+    "TbkIdTerminal": "13",
+    "TbkNroOperacion": "0",
+    "TbkNroTicket": "1122334455",
+    "TbkTipoTarjeta": "",
+    "NumeroTarjeta": "0",
+    "codigoCupon": null,
+    "montoCupon": 0.0,
+    "categoriaCupon": null,
+    "valorCupon": 0
+  }
+}
+
+ if (esCupon)
+            {
+                this.TxtCantidad.Valor = this.Data.ParametrosCupones.monto;
+                Data.Entradas.Precio = int.Parse(this.Data.ParametrosCupones.valor);
+               
+                this.LblEntradaGeneral.Font = new Font("Roboto Medium", 11.25F, FontStyle.Strikeout, GraphicsUnit.Point, 0);
+                this.PnlEntradaGeneral.Enabled = false;
+                this.PnlEntradaRebajada.Visible = true;
+
+                this.LblEntradaRebajada.Text = "$ " + this.Data.ParametrosCupones.valor;
+                this.TxtCantidad.Enabled = false;
+                this.Data.ParametrosVenta.ParametrosNegocio.MaxCantEntradasPorVenta =this.Data.ParametrosCupones.monto;
+                
+            }
+            else {
+                //esta parte sirve para ver si hay o no promocion
+                //colocar valores iniciales y quedaria listo en teoria
+                valoresIniciales();  
+
+            }
+            if (esCupon) {
+                    this.etiquetasCupon();
+                }
+                else if (this.Data.ParametrosVenta.ValorEntradaGeneral > this.Data.ParametrosVenta.ValorEntradaAplicable)
+                {
+                    this.etiquetasPromocion();
+                }
+                else
+                {
+                    this.etiquetasNormales();
+                }

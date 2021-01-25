@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "proyectouber-77826": {
+      "hosting": {
+        "proyectoUberWeb": [
+          "proyectouber-77826"
+        ]
+      }
+    }
+  }
+}

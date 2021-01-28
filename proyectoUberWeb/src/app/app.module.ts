@@ -16,9 +16,10 @@ import { ConductoresComponent } from './componentes/conductores/conductores/cond
 import { VehiculosComponent } from './componentes/vehiculos/vehiculos/vehiculos.component';
 import { PedidosComponent } from './componentes/pedidos/pedidos/pedidos.component';
 import { HomeComponent } from './home/home.component';
-import { ModalConfirmarComponent } from './componentes/shared/modal-confirmar/modal-confirmar.component';
+import { ModalVehiculosComponent } from './componentes/shared/modal-vehiculos/modal-vehiculos.component';
 import { FrmGuardarComponent } from './componentes/vehiculos/formularios/frm-guardar/frm-guardar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FrmEditarComponent } from './componentes/vehiculos/formularios/frm-editar/frm-editar.component';
 
 
 
@@ -31,8 +32,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VehiculosComponent,
     PedidosComponent,
     HomeComponent,
-    ModalConfirmarComponent,
-    FrmGuardarComponent
+    ModalVehiculosComponent,
+    FrmGuardarComponent,
+    FrmEditarComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
   ],
-  entryComponents:[ModalConfirmarComponent],
+  entryComponents:[ModalVehiculosComponent],
   providers: [VehiculoService],
   bootstrap: [AppComponent]
 })

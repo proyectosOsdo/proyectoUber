@@ -1,4 +1,5 @@
-import { ModalConfirmarComponent } from './../../shared/modal-confirmar/modal-confirmar.component';
+import { VehiculoI } from './../models/vehiculo.interface';
+import { ModalVehiculosComponent } from '../../shared/modal-vehiculos/modal-vehiculos.component';
 import { Component, OnInit,AfterViewInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
@@ -21,7 +22,7 @@ export class VehiculosComponent implements OnInit,AfterViewInit {
 
     }
 
-  displayedColumns: string[] = ['placa', 'marca', 'modelo', 'capacidad'];
+  displayedColumns: string[] = ['placa', 'marca', 'modelo', 'capacidad','actions'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -37,13 +38,7 @@ ngAfterViewInit() {
 
 }
   abrirModalAgregar(){
-
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-
-    const dialogRef = this.dialog.open(ModalConfirmarComponent,dialogConfig);
+    this.abrirModal();
 
   }
 
@@ -52,5 +47,27 @@ ngAfterViewInit() {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  onEdit(row){
+    this.abrirModal(row);
+  }
+
+
+  onDelete($key){
+    if(confirm('Are you sure to delete this record ?')){
+    this.servicioVehiculo.eliminarVehiculo($key);
+    }
+    }
+
+    abrirModal(contenido?: VehiculoI){
+      const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = "60%";
+        dialogConfig.data = {
+      titulo: contenido ? 'Editar Vehiculo':'Agregar Vehiculo',
+      contenido:contenido
+                        };
+    this.dialog.open(ModalVehiculosComponent,dialogConfig);
+  }
 
 }

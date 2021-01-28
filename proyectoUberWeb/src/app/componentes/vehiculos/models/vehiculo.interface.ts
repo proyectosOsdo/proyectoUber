@@ -7,7 +7,7 @@ export interface VehiculoI{
   tipoVehiculo:String;
   fechaIngreso:String;
   estado:boolean;
-  tipoDelicenciaRequerida?:string;
+  tipoLicencia?:string;
   fotos?:String;
 
 }

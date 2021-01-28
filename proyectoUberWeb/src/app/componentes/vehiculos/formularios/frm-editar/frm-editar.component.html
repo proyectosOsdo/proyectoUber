@@ -1,0 +1,57 @@
+<form [formGroup]="FrmEditarVehiculo" (ngSubmit)="submit(FrmEditarVehiculo.value)">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <input formControlName="placa" matInput placeholder="Placa*">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="marca" matInput placeholder="Marca*">
+          <mat-error>Invalid email address.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="modelo" matInput placeholder="Modelo*">
+          <mat-error *ngIf="false">This field is mandatory.</mat-error>
+          <mat-error *ngIf="false">Minimum 8 charactors needed.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="capacidad" matInput placeholder="Capacidad">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <mat-select formControlName="tipoLicencia" placeholder="Tipo Licencia*">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let department of car">
+              <mat-option value="{{department.text}}">{{department.text}}</mat-option>
+
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="tipoVehiculo" placeholder="Tipo Vehiculo*">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let department of car">
+              <mat-option value="{{department.tipo}}">{{department.tipo}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="fechaIngreso" matInput [matDatepicker]="picker" placeholder="Fecha Ingreso">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <div class="add-bottom-padding">
+          <mat-checkbox formControlName="estado">Estado</mat-checkbox>
+        </div>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="false" [mat-dialog-close]="true">Editar</button>
+          <button mat-raised-button color="warn" (click)="onClear()">Cancelar</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

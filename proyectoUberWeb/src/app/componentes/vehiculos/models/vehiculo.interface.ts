@@ -9,5 +9,6 @@ export interface VehiculoI{
   estado:boolean;
   tipoLicencia?:string;
   fotos?:String;
+  $key:string;
 
 }

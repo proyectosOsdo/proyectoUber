@@ -47,7 +47,7 @@ export class FrmGuardarComponent  {
     if (this.FrmGuardarVehiculo.valid) {
       data.estado=true;
       data.fotos=null;
-      this.servicioVehiculo.guardarVehiculo(data);
+      this.servicioVehiculo.GuardarVehiculoRealDatabase(data);
     }
     else{
       //alert("Todos Los Campos Son Necesarios");

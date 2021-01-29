@@ -49,9 +49,8 @@ export class FrmEditarComponent implements OnInit{
   }
   submit(data:VehiculoI) {
     if (this.FrmEditarVehiculo.valid) {
-      data.estado=true;
       data.fotos=null;
-      this.servicioVehiculo.actualizarVehiculo(this.DataVehiculo.id,data);
+      this.servicioVehiculo.EditarVehiculoRealDatabase(data,this.DataVehiculo.$key);
     }
     else{
       //alert("Todos Los Campos Son Necesarios");

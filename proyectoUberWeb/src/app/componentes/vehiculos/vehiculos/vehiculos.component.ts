@@ -6,6 +6,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { VehiculoService } from './../services/vehiculo.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import Swal from 'sweetalert2';
 
 
 
@@ -28,7 +29,7 @@ export class VehiculosComponent implements OnInit,AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
 ngOnInit(){
-  this.servicioVehiculo.obtenerVehiculos().subscribe(resp => (this.dataSource.data=resp));
+  this.servicioVehiculo.ObtenerVehiculosRealDatabase().subscribe(resp => (this.dataSource.data=resp));
 
 
 }
@@ -48,14 +49,26 @@ ngAfterViewInit() {
   }
 
   onEdit(row){
+
     this.abrirModal(row);
   }
 
 
   onDelete($key){
-    if(confirm('Are you sure to delete this record ?')){
-    this.servicioVehiculo.eliminarVehiculo($key);
-    }
+    Swal.fire({
+      title: 'Esta Seguro?',
+      text: "Esta Apunto de eliminar un registro,este proceso no se puede revertir",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.servicioVehiculo.EliminarVehiculoRealDatabase($key);
+
+      }
+    });
     }
 
     abrirModal(contenido?: VehiculoI){

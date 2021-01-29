@@ -1,4 +1,4 @@
-export interface conductor{
+export interface ConductorI{
   id:string;
   nombreConductor:String;
   apellidosConductor:String;
@@ -9,4 +9,5 @@ export interface conductor{
   direccionConductor:String;
   telefonoConductor:String;
   licenciaConductor:String;
+  $key:string;
 }

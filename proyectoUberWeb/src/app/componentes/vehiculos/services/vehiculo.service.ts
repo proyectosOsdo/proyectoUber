@@ -1,9 +1,11 @@
+import { AlertsService } from './../../shared/services/alerts.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { VehiculoI } from './../models/vehiculo.interface';
+
 import  Swal  from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,8 @@ vehiculo:Observable<VehiculoI>;
 
   constructor(
     private fes: AngularFirestore,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private alertService:AlertsService
     ){
      this.coleccionVehiculos = fes.collection<VehiculoI>('vehiculos');
      this.vehiculosDB = this.db.list('/vehiculos', (ref) =>ref.orderByChild('placa'));
@@ -42,7 +45,7 @@ vehiculo:Observable<VehiculoI>;
 
               guardarVehiculo(vehiculo:VehiculoI){
                 this.fes.collection('vehiculos').add(vehiculo).then(() => {
-                  Swal.fire('Exitooo!!!', 'Registro Guardado Exitosamente', 'success');
+                  this.alertService.mensajeGuardar();
                  }).catch(() => {
                   Swal.fire('Error al Guardar!!!', 'No se pudo Guardar el registro', 'error');
                  });
@@ -85,25 +88,25 @@ vehiculo:Observable<VehiculoI>;
               }
               GuardarVehiculoRealDatabase(vehiculo:VehiculoI){
                 return this.vehiculosDB.push(vehiculo).then(() => {
-                                Swal.fire('Exitooo!!!', 'Se actualizo el registro correctamente', 'success');
+                  this.alertService.mensajeGuardar();
                  }).catch(() => {
-                                Swal.fire('Error al actualizar!!!', 'No se pudo actualizar el registro', 'error');
+                  this.alertService.mensajeError();
                  });
               }
               EditarVehiculoRealDatabase(vehiculo:VehiculoI,key){
                 const $key = vehiculo.$key;
                 delete vehiculo.$key;
                 this.db.list('/vehiculos').update(key, vehiculo).then(() => {
-                                Swal.fire('Exitooo!!!', 'Se actualizo el registro correctamente', 'success');
+                  this.alertService.mensajeEditar();
                  }).catch(() => {
-                                Swal.fire('Error al actualizar!!!', 'No se pudo actualizar el registro', 'error');
+                  this.alertService.mensajeError();
                  });
               }
               EliminarVehiculoRealDatabase(id:string){
                 this.db.list('/vehiculos').remove(id).then(() => {
-                                Swal.fire('Exitooo!!!', 'Se actualizo el registro correctamente', 'success');
+                  this.alertService.mensajeEditar();
                  }).catch(() => {
-                                Swal.fire('Error al actualizar!!!', 'No se pudo actualizar el registro', 'error');
+                  this.alertService.mensajeError();
                  });
               }
 

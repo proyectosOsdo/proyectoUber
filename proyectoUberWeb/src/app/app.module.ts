@@ -20,6 +20,7 @@ import { ModalVehiculosComponent } from './componentes/shared/modal-vehiculos/mo
 import { FrmGuardarComponent } from './componentes/vehiculos/formularios/frm-guardar/frm-guardar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FrmEditarComponent } from './componentes/vehiculos/formularios/frm-editar/frm-editar.component';
+import { ModalConductoresComponent } from './componentes/shared/modal-conductores/modal-conductores.component';
 
 
 
@@ -34,7 +35,8 @@ import { FrmEditarComponent } from './componentes/vehiculos/formularios/frm-edit
     HomeComponent,
     ModalVehiculosComponent,
     FrmGuardarComponent,
-    FrmEditarComponent
+    FrmEditarComponent,
+    ModalConductoresComponent
   ],
   imports: [
     BrowserModule,

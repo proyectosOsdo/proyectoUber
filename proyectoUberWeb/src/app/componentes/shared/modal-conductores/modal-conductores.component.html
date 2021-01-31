@@ -1,1 +1,16 @@
-<p>modal-conductores works!</p>
+<mat-toolbar>
+  <span>{{data.titulo}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button [mat-dialog-close]="true" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<mat-dialog-content class="dialog-content">
+  <div *ngIf="data.contenido; else showNewForm">
+    <app-frm-editar-conductor [DataConductor]="data.contenido"></app-frm-editar-conductor>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+  <ng-template #showNewForm>
+    <app-frm-guardar-conductor></app-frm-guardar-conductor>
+  </ng-template>
+</mat-dialog-content>
+

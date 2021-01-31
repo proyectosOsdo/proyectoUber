@@ -21,6 +21,15 @@ import { FrmGuardarComponent } from './componentes/vehiculos/formularios/frm-gua
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FrmEditarComponent } from './componentes/vehiculos/formularios/frm-editar/frm-editar.component';
 import { ModalConductoresComponent } from './componentes/shared/modal-conductores/modal-conductores.component';
+import { DashComponent } from './dash/dash.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FrmGuardarConductorComponent } from './componentes/conductores/formularios/frm-guardar-conductor/frm-guardar-conductor.component';
+import { FrmEditarConductorComponent } from './componentes/conductores/formularios/frm-editar-conductor/frm-editar-conductor.component';
 
 
 
@@ -36,7 +45,10 @@ import { ModalConductoresComponent } from './componentes/shared/modal-conductore
     ModalVehiculosComponent,
     FrmGuardarComponent,
     FrmEditarComponent,
-    ModalConductoresComponent
+    ModalConductoresComponent,
+    DashComponent,
+    FrmGuardarConductorComponent,
+    FrmEditarConductorComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +59,12 @@ import { ModalConductoresComponent } from './componentes/shared/modal-conductore
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
   ],
   entryComponents:[ModalVehiculosComponent],
   providers: [VehiculoService],

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal-conductores',
@@ -6,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-conductores.component.scss']
 })
 export class ModalConductoresComponent implements OnInit {
+  public data:any;
 
-  constructor() { }
+  constructor(public dialog: MatDialogRef<ModalConductoresComponent>,@Inject(MAT_DIALOG_DATA) data) {
+      this.data=data;
 
+  }
   ngOnInit(): void {
   }
 

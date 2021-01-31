@@ -1,6 +1,6 @@
+import { ModalConductoresComponent } from './../../shared/modal-conductores/modal-conductores.component';
 import { ConductorService } from './../services/conductor.service';
 import { ConductorI } from './../models/conductor.interface';
-import { ModalVehiculosComponent } from '../../shared/modal-vehiculos/modal-vehiculos.component';
 import { Component, OnInit,AfterViewInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
@@ -21,7 +21,7 @@ export class ConductoresComponent implements OnInit {
 
     }
 
-  displayedColumns: string[] = ['identificacion','nombre', 'apellidos', 'direccion', 'telefono','actions'];
+  displayedColumns: string[] = ['identificacion','nombres', 'apellidos', 'direccion', 'telefono','actions'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -74,10 +74,10 @@ ngAfterViewInit() {
         dialogConfig.autoFocus = true;
         dialogConfig.width = "60%";
         dialogConfig.data = {
-      titulo: contenido ? 'Editar Vehiculo':'Agregar Vehiculo',
+      titulo: contenido ? 'Editar Conductor':'Agregar Conductor',
       contenido:contenido
                         };
-    this.dialog.open(ModalVehiculosComponent,dialogConfig);
+    this.dialog.open(ModalConductoresComponent,dialogConfig);
   }
 
 }

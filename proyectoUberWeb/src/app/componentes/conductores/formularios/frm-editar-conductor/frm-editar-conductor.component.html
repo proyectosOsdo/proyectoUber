@@ -1,1 +1,59 @@
-<p>frm-editar-conductor works!</p>
+<form [formGroup]="FrmEditarConductor" (ngSubmit)="submit(FrmEditarConductor.value)">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <mat-select formControlName="tipoDocumento" placeholder="Tipo Documento*">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let department of car">
+              <mat-option value="{{department.text}}">{{department.text}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="identificacion" matInput placeholder="Identificacion*">
+          <mat-error>Identificacion es requerida.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="nombres" matInput placeholder="Nombres*">
+          <mat-error>Invalid email address.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="apellidos" matInput placeholder="Apellidos*">
+          <mat-error *ngIf="false">This field is mandatory.</mat-error>
+          <mat-error *ngIf="false">Minimum 8 charactors needed.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="direccion" matInput placeholder="Direccion">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <input formControlName="telefono" matInput placeholder="Telefono">
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="numeroLicencia" matInput placeholder="Numero Licencia">
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="fechaIngreso" matInput [matDatepicker]="picker" placeholder="Fecha Ingreso">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="fechaNacimiento" matInput [matDatepicker]="pickerNacimiento" placeholder="Fecha Nacimiento">
+          <mat-datepicker-toggle matSuffix [for]="pickerNacimiento"></mat-datepicker-toggle>
+          <mat-datepicker #pickerNacimiento></mat-datepicker>
+        </mat-form-field>
+        <div class="add-bottom-padding">
+          <mat-checkbox formControlName="estado">Estado</mat-checkbox>
+        </div>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="false" [mat-dialog-close]="true">Guardar</button>
+          <button mat-raised-button color="warn" [mat-dialog-close]="true" >Cancelar</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

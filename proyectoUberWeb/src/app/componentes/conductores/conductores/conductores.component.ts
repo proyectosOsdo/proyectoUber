@@ -47,7 +47,6 @@ ngAfterViewInit() {
   }
 
   onEdit(row){
-
     this.abrirModal(row);
   }
 

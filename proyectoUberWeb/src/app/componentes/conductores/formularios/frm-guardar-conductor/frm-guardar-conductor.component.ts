@@ -11,24 +11,21 @@ import {FormBuilder, Validators ,ReactiveFormsModule, FormGroup} from '@angular/
 export class FrmGuardarConductorComponent  {
 
   public car:Array<any> = [
-    {id: 1, text: ' Cedula Ciudadnia'},
+    {id: 1, text: ' Cedula Ciudadania'},
     {id: 2, text: ' Cedula Estranjeria'},
     {id: 3, text: ' Pasaporte'},
     {id: 4, text: ' Registro Civil'},
 ];
-
-
-
   minDate: Date;
   maxDate: Date;
-  public FrmGuardarVehiculo:FormGroup;
+  public FrmGuardarConductor:FormGroup;
   constructor(private formBuilder: FormBuilder,
               private servicioConductor:ConductorService) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
     this.maxDate = new Date(currentYear + 1, 11, 31);
 
-    this.FrmGuardarVehiculo = formBuilder.group({
+    this.FrmGuardarConductor = formBuilder.group({
 
       tipoDocumento: ['', [Validators.required]],
       identificacion: ['', Validators.required],
@@ -46,7 +43,7 @@ export class FrmGuardarConductorComponent  {
 
   }
   submit(data:ConductorI) {
-    if (this.FrmGuardarVehiculo.valid) {
+    if (this.FrmGuardarConductor.valid) {
       data.estado=true;
       data.foto=null;
       this.servicioConductor.GuardarConductor(data);

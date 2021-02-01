@@ -16,7 +16,7 @@ conductor:Observable<ConductorI>;
   constructor(
     private db: AngularFireDatabase
     ){
-     this.conductorDB = this.db.list('/Conductor', (ref) =>ref.orderByChild('estado'));
+     this.conductorDB = this.db.list('/conductores', (ref) =>ref.orderByChild('estado'));
     }
               ObtenerConductores(): Observable<ConductorI[]> {
                 return this.conductorDB.snapshotChanges().pipe(
@@ -32,8 +32,8 @@ conductor:Observable<ConductorI>;
               ObtenerConductor(){
 
               }
-              GuardarConductor(conductor:ConductorI){
-                return this.conductorDB.push(conductor).then(() => {
+              GuardarConductor(conductores:ConductorI){
+                return this.conductorDB.push(conductores).then(() => {
                                 Swal.fire('Exitooo!!!', 'Se actualizo el registro correctamente', 'success');
                  }).catch(() => {
                                 Swal.fire('Error al actualizar!!!', 'No se pudo actualizar el registro', 'error');
@@ -42,14 +42,14 @@ conductor:Observable<ConductorI>;
               EditarConductor(conductor:ConductorI,key){
                 const $key = conductor.$key;
                 delete conductor.$key;
-                this.db.list('/Conductor').update(key, conductor).then(() => {
+                this.db.list('/conductores').update(key, conductor).then(() => {
                                 Swal.fire('Exitooo!!!', 'Se actualizo el registro correctamente', 'success');
                  }).catch(() => {
                                 Swal.fire('Error al actualizar!!!', 'No se pudo actualizar el registro', 'error');
                  });
               }
               EliminarConductor(id:string){
-                this.db.list('/Conductor').remove(id).then(() => {
+                this.db.list('/conductores').remove(id).then(() => {
                                 Swal.fire('Exitooo!!!', 'Se actualizo el registro correctamente', 'success');
                  }).catch(() => {
                                 Swal.fire('Error al actualizar!!!', 'No se pudo actualizar el registro', 'error');

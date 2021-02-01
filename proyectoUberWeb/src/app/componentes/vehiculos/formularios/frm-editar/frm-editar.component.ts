@@ -77,7 +77,7 @@ export class FrmEditarComponent implements OnInit{
       estado:this.DataVehiculo.estado
 
     }
-      )
+      );
   }
 
 }

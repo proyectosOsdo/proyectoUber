@@ -10,5 +10,7 @@ export interface ConductorI{
   numeroLicencia:String;
   $key:string;
   estado:boolean;
+  email:string;
+  password:string;
   foto?:any;
 }

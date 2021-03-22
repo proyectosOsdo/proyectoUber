@@ -1,6 +1,7 @@
 import { VehiculoService } from './componentes/vehiculos/services/vehiculo.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 import { SideBarComponent } from './componentes/navs/side-bar/side-bar.component';
@@ -25,7 +26,6 @@ import { DashComponent } from './dash/dash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FrmGuardarConductorComponent } from './componentes/conductores/formularios/frm-guardar-conductor/frm-guardar-conductor.component';
@@ -62,9 +62,9 @@ import { FrmEditarConductorComponent } from './componentes/conductores/formulari
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    MatIconModule,
     MatButtonModule,
     LayoutModule,
+    AngularFireAuthModule,
   ],
   entryComponents:[ModalVehiculosComponent],
   providers: [VehiculoService],

@@ -36,6 +36,10 @@ export class FrmGuardarConductorComponent  {
       fechaNacimiento: ['', Validators.required],
       fechaIngreso: ['', Validators.required],
       numeroLicencia: ['', Validators.required],
+      email: ['', Validators.required],
+      rEmail: ['', Validators.required],
+      password: ['', Validators.required],
+      rPassword: ['', Validators.required],
       estado: ['', Validators.required],
 
     });
@@ -46,7 +50,11 @@ export class FrmGuardarConductorComponent  {
     if (this.FrmGuardarConductor.valid) {
       data.estado=true;
       data.foto=null;
-      this.servicioConductor.GuardarConductor(data);
+      let osdo = this.servicioConductor.guardarEmailPassword(data.email,data.password,data);
+      if(osdo){
+        console.log("resp",osdo);
+      }
+
     }
     else{
       //alert("Todos Los Campos Son Necesarios");

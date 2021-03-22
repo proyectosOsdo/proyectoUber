@@ -1,14 +1,15 @@
 {
   "targets": {
-    "proyectouber-77826": {
+    "vanesdelvalle-99f72": {
       "hosting": {
-        "proyectoUberWeb": [
-          "proyectouber-77826"
+        "vanesDelValle": [
+          "vanesdelvalle-99f72"
         ]
       }
     }
   },
   "projects": {
-    "default": "proyectouber-77826"
+    "default": "vanesdelvalle-99f72",
+    "vanesDelValle": "vanesdelvalle-99f72"
   }
 }

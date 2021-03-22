@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig :{
-    apiKey: "AIzaSyAS_ELsnlxIsWhbzi6_MaIatv22hq_18NA",
-    authDomain: "proyectouber-77826.firebaseapp.com",
-    databaseURL: "https://proyectouber-77826.firebaseio.com",
-    projectId: "proyectouber-77826",
-    storageBucket: "proyectouber-77826.appspot.com",
-    messagingSenderId: "140796970296",
-    appId: "1:140796970296:web:df4e1c9a7323ab170f2dcd",
-    measurementId: "G-X9VVHB4E2C"
+    apiKey: "AIzaSyDp6lwFZNK1KebHUZM868_xf-4nt48OXH0",
+  authDomain: "uberclone-a9a98.firebaseapp.com",
+  databaseURL: "https://uberclone-a9a98-default-rtdb.firebaseio.com",
+  projectId: "uberclone-a9a98",
+  storageBucket: "uberclone-a9a98.appspot.com",
+  messagingSenderId: "744358026628",
+  appId: "1:744358026628:web:50c208a153c948ac9d91d1",
+  measurementId: "G-Y7W95NSF9N"
   }
 };
 

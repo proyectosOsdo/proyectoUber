@@ -1,5 +1,5 @@
 <form [formGroup]="FrmGuardarConductor" (ngSubmit)="submit(FrmGuardarConductor.value)">
-  <mat-grid-list cols="2" rowHeight="300px">
+  <mat-grid-list cols="3" rowHeight="400px">
     <mat-grid-tile>
       <div class="controles-container">
         <mat-form-field>
@@ -49,11 +49,32 @@
         <div class="add-bottom-padding">
           <mat-checkbox formControlName="estado">Estado</mat-checkbox>
         </div>
-        <div class="button-row">
-          <button mat-raised-button color="primary" type="submit" [disabled]="false" [mat-dialog-close]="true">Guardar</button>
-          <button mat-raised-button color="warn" (click)="onClear()">Cancelar</button>
-        </div>
       </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+      <mat-form-field>
+        <input formControlName="email" matInput placeholder="Correo Electronico*">
+        <mat-error>Correo Electronico es obligatorio</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="rEmail" matInput placeholder="Repetir correo*">
+        <mat-error>Identificacion es requerida.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="password" matInput placeholder="Contraseña*">
+        <mat-error>Identificacion es requerida.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="rPassword" matInput placeholder="Repetir Contraseña*">
+        <mat-error>Identificacion es requerida.</mat-error>
+      </mat-form-field>
+
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" [disabled]="false" >Guardar</button>
+        <button mat-raised-button color="warn" [mat-dialog-close]="true" (click)="onClear()">Cancelar</button>
+      </div>
+    </div>
     </mat-grid-tile>
   </mat-grid-list>
 </form>

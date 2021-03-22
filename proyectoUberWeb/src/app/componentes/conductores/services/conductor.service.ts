@@ -1,3 +1,4 @@
+import { AngularFireAuthModule,AngularFireAuth } from '@angular/fire/auth';
 import { AlertsService } from './../../shared/services/alerts.service';
 import { Injectable } from '@angular/core';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
@@ -14,9 +15,10 @@ private conductorDB: AngularFireList<ConductorI>;
 conductor:Observable<ConductorI>;
 
   constructor(
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private auth :AngularFireAuth
     ){
-     this.conductorDB = this.db.list('/conductores', (ref) =>ref.orderByChild('estado'));
+     this.conductorDB = this.db.list('Users/Drivers', (ref) =>ref.orderByChild('name'));
     }
               ObtenerConductores(): Observable<ConductorI[]> {
                 return this.conductorDB.snapshotChanges().pipe(
@@ -42,18 +44,32 @@ conductor:Observable<ConductorI>;
               EditarConductor(conductor:ConductorI,key){
                 const $key = conductor.$key;
                 delete conductor.$key;
-                this.db.list('/conductores').update(key, conductor).then(() => {
+                this.db.list('Users/Drivers').update(key, conductor).then(() => {
                                 Swal.fire('Exitooo!!!', 'Se actualizo el registro correctamente', 'success');
                  }).catch(() => {
                                 Swal.fire('Error al actualizar!!!', 'No se pudo actualizar el registro', 'error');
                  });
               }
               EliminarConductor(id:string){
-                this.db.list('/conductores').remove(id).then(() => {
+                this.db.list('Users/Drivers').remove(id).then(() => {
                                 Swal.fire('Exitooo!!!', 'Se actualizo el registro correctamente', 'success');
                  }).catch(() => {
                                 Swal.fire('Error al actualizar!!!', 'No se pudo actualizar el registro', 'error');
                  });
               }
 
+              guardarEmailPassword(email,password,conductores:ConductorI){
+                return this.auth.createUserWithEmailAndPassword(email,password)
+                .then(()=>{
+                    this.GuardarConductor(conductores);
+                    return true;
+                }).catch(() => {
+                  Swal.fire('Error al crear el usuario!!!', 'El correo ya existe', 'error');
+                  return false;
+                });
+
+
+              }
+
 }
+

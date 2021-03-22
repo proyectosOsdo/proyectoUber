@@ -20,9 +20,7 @@ export class SideBarComponent implements OnInit {
   fillerNav=[
     {name:'home',route:'home',icon:'home' },
     {name:'Conductores',route:'conductores',icon:'assignment_ind'},
-    {name:'Vehiculos',route:'vehiculos',icon:'airport_shuttle'},
-    {name:'Pedidos',route:'pedidos',icon:'departure_board'},
-    {name:'Clientes',route:'clientes',icon:'perm_identity'}
+    {name:'Vehiculos',route:'vehiculos',icon:'airport_shuttle'}
   ];
 
 
@@ -40,9 +38,4 @@ export class SideBarComponent implements OnInit {
   }
 
   shouldRun = true;
-
-
-
-
-
 }

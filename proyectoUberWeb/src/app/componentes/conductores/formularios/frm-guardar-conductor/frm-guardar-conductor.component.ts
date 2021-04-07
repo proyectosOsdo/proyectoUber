@@ -1,5 +1,5 @@
 import { ConductorService } from './../../services/conductor.service';
-import { ConductorI } from './../../models/conductor.interface';
+import { ConductorI } from '../../models/conductor.interface';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators ,ReactiveFormsModule, FormGroup} from '@angular/forms';
 
@@ -9,7 +9,7 @@ import {FormBuilder, Validators ,ReactiveFormsModule, FormGroup} from '@angular/
   styleUrls: ['./frm-guardar-conductor.component.scss']
 })
 export class FrmGuardarConductorComponent  {
-
+  private image: any;
   public car:Array<any> = [
     {id: 1, text: ' Cedula Ciudadania'},
     {id: 2, text: ' Cedula Estranjeria'},
@@ -37,10 +37,10 @@ export class FrmGuardarConductorComponent  {
       fechaIngreso: ['', Validators.required],
       numeroLicencia: ['', Validators.required],
       email: ['', Validators.required],
-      rEmail: ['', Validators.required],
       password: ['', Validators.required],
       rPassword: ['', Validators.required],
       estado: ['', Validators.required],
+      imagenConductor:['', Validators.required]
 
     });
 
@@ -49,18 +49,15 @@ export class FrmGuardarConductorComponent  {
   submit(data:ConductorI) {
     if (this.FrmGuardarConductor.valid) {
       data.estado=true;
-      data.foto=null;
-      let osdo = this.servicioConductor.guardarEmailPassword(data.email,data.password,data);
-      if(osdo){
-        console.log("resp",osdo);
-      }
-
+      this.servicioConductor.preAddAndUpdatePost(data, this.image);
     }
     else{
       //alert("Todos Los Campos Son Necesarios");
     }
   }
-
+  handleImage(event: any): void {
+    this.image = event.target.files[0];
+  }
   onClose(){
 
   }

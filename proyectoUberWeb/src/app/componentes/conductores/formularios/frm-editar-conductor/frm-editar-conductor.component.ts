@@ -1,5 +1,5 @@
 import { ConductorService } from './../../services/conductor.service';
-import { ConductorI } from './../../models/conductor.interface';
+import { ConductorI } from '../../models/conductor.interface';
 import { Component, Input, OnInit } from '@angular/core';
 import {FormBuilder, Validators ,ReactiveFormsModule, FormGroup} from '@angular/forms';
 

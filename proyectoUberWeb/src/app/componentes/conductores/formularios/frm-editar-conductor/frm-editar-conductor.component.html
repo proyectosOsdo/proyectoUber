@@ -1,5 +1,17 @@
 <form [formGroup]="FrmEditarConductor" (ngSubmit)="submit(FrmEditarConductor.value)">
-  <mat-grid-list cols="2" rowHeight="300px">
+  <mat-grid-list cols="3" rowHeight="300px">
+    <mat-grid-tile>
+      <mat-card class="post-card">
+        <img matCardImage class="align-center" [src]="DataConductor.foto" />
+        <mat-card-content>
+          <mat-card-title>
+            {{ DataConductor.nombres }} {{ DataConductor.apellidos }}
+          </mat-card-title>
+
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
     <mat-grid-tile>
       <div class="controles-container">
         <mat-form-field>

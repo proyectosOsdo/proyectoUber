@@ -2,6 +2,7 @@ import { VehiculoService } from './componentes/vehiculos/services/vehiculo.servi
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 
 import { SideBarComponent } from './componentes/navs/side-bar/side-bar.component';
@@ -30,6 +31,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FrmGuardarConductorComponent } from './componentes/conductores/formularios/frm-guardar-conductor/frm-guardar-conductor.component';
 import { FrmEditarConductorComponent } from './componentes/conductores/formularios/frm-editar-conductor/frm-editar-conductor.component';
+import { VerConductorComponent } from './componentes/conductores/formularios/ver-conductor/ver-conductor.component';
 
 
 
@@ -48,7 +50,8 @@ import { FrmEditarConductorComponent } from './componentes/conductores/formulari
     ModalConductoresComponent,
     DashComponent,
     FrmGuardarConductorComponent,
-    FrmEditarConductorComponent
+    FrmEditarConductorComponent,
+    VerConductorComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { FrmEditarConductorComponent } from './componentes/conductores/formulari
     ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,

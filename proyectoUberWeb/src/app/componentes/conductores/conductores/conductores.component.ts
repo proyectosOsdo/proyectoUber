@@ -1,6 +1,6 @@
 import { ModalConductoresComponent } from './../../shared/modal-conductores/modal-conductores.component';
 import { ConductorService } from './../services/conductor.service';
-import { ConductorI } from './../models/conductor.interface';
+import { ConductorI } from '../models/conductor.interface';
 import { Component, OnInit,AfterViewInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';

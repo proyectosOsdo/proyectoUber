@@ -54,7 +54,6 @@ export class FrmEditarConductorComponent  {
   }
   submit(data:ConductorI) {
     if (this.FrmEditarConductor.valid) {
-      data.foto=null;
       this.servicioConductor.EditarConductor(data,this.DataConductor.$key);
     }
     else{

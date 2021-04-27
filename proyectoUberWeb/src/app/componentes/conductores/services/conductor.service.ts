@@ -42,7 +42,8 @@ conductor:Observable<ConductorI>;
               ObtenerConductor(){
 
               }
-              GuardarConductor(conductores:ConductorI){
+              GuardarConductor(conductores:ConductorI,key){
+                conductores.idFirebase = key;
                 return this.conductorDB.push(conductores).then(() => {
                                 Swal.fire('Exitooo!!!', 'Se actualizo el registro correctamente', 'success');
                  }).catch(() => {
@@ -68,8 +69,9 @@ conductor:Observable<ConductorI>;
 
               guardarEmailPassword(email,password,conductores:ConductorI){
                 return this.auth.createUserWithEmailAndPassword(email,password)
-                .then(()=>{
-                    this.GuardarConductor(conductores);
+                .then((userCredential)=>{
+                  var id = userCredential.user.uid
+                    this.GuardarConductor(conductores,id);
                     this.dialog.closeAll();
 
                 }).catch(() => {

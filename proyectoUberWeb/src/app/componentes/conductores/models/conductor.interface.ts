@@ -12,5 +12,6 @@ export interface ConductorI{
   estado:boolean;
   email:string;
   password:string;
+  idFirebase:string;
   foto?:any;
 }

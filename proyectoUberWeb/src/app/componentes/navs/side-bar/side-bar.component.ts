@@ -20,9 +20,9 @@ export class SideBarComponent implements OnInit {
   fillerNav=[
     {name:'home',route:'home',icon:'home' },
     {name:'Conductores',route:'conductores',icon:'assignment_ind'},
-    {name:'Vehiculos',route:'vehiculos',icon:'airport_shuttle'}
+    {name:'Vehiculos',route:'vehiculos',icon:'airport_shuttle'},
+    {name:'Solicitudes',route:'solicitudes',icon:'assignment_turned_in'}
   ];
-
 
 
   private _mobileQueryListener: () => void;

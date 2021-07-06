@@ -32,6 +32,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { FrmGuardarConductorComponent } from './componentes/conductores/formularios/frm-guardar-conductor/frm-guardar-conductor.component';
 import { FrmEditarConductorComponent } from './componentes/conductores/formularios/frm-editar-conductor/frm-editar-conductor.component';
 import { VerConductorComponent } from './componentes/conductores/formularios/ver-conductor/ver-conductor.component';
+import { ModalSolicitudesComponent } from './componentes/shared/modal-solicitudes/modal-solicitudes.component';
+import { FrmEditarSolicitudComponent } from './componentes/pedidos/formularios/frm-editar-solicitud/frm-editar-solicitud.component';
 
 
 
@@ -51,7 +53,9 @@ import { VerConductorComponent } from './componentes/conductores/formularios/ver
     DashComponent,
     FrmGuardarConductorComponent,
     FrmEditarConductorComponent,
-    VerConductorComponent
+    VerConductorComponent,
+    ModalSolicitudesComponent,
+    FrmEditarSolicitudComponent
   ],
   imports: [
     BrowserModule,

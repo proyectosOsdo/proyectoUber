@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <span>{{data.titulo}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button [mat-dialog-close]="true" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<mat-dialog-content class="dialog-content">
+  <div *ngIf="data.contenido; else showNewForm">
+    <app-frm-editar-solicitud [DataConductor]="data.contenido"></app-frm-editar-solicitud>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+  <ng-template #showNewForm>
+    <app-frm-editar-solicitud></app-frm-editar-solicitud>
+  </ng-template>
+</mat-dialog-content>

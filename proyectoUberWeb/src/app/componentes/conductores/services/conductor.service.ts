@@ -40,7 +40,11 @@ conductor:Observable<ConductorI>;
               }
 
               ObtenerConductor(){
+                return this.db.list('Users/Drivers').snapshotChanges();
 
+              }
+              getAll(): AngularFireList<ConductorI> {
+                return this.conductorDB;
               }
               GuardarConductor(conductores:ConductorI,key){
                 conductores.idFirebase = key;

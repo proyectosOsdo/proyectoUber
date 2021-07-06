@@ -1,5 +1,7 @@
-import { ConductorService } from './../../conductores/services/conductor.service';
+import { ConductorI } from './../../conductores/models/conductor.interface';
 import { SolicitudI } from './../models/solicitud.interface';
+
+import { ConductorService } from './../../conductores/services/conductor.service';
 import { ModalVehiculosComponent } from '../../shared/modal-vehiculos/modal-vehiculos.component';
 import { Component, OnInit,AfterViewInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
@@ -7,7 +9,10 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { SolicitudesService } from './../services/solicitudes.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+
+import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { ModalSolicitudesComponent } from '../../shared/modal-solicitudes/modal-solicitudes.component';
 
 
 @Component({
@@ -23,7 +28,7 @@ export class PedidosComponent implements OnInit {
     private conductorService:ConductorService) {
 
     }
-
+    conductores: any;
   displayedColumns: string[] = ['nameClient', 'origin', 'destination', 'km','nameDriver','actions'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -31,10 +36,13 @@ export class PedidosComponent implements OnInit {
 
 ngOnInit(){
   this.servicioSolicitud.ObtenerSolicitudes().subscribe(resp => (this.dataSource.data=resp));
+  this.obtenerConductores();
 }
 ngAfterViewInit() {
   this.dataSource.paginator = this.paginator;
   this.dataSource.sort = this.sort;
+  this.obtenerConductores();
+
 
 }
   abrirModalAgregar(){
@@ -79,7 +87,22 @@ ngAfterViewInit() {
       titulo: contenido ? 'Editar Solicitud':'Agregar Solicitud',
       contenido:contenido
                         };
-    this.dialog.open(ModalVehiculosComponent,dialogConfig);
+    this.dialog.open(ModalSolicitudesComponent,dialogConfig);
+  }
+
+  obtenerConductores(){
+      this.conductorService.getAll().snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c =>
+            ({ key: c.payload.key, ...c.payload.val() })
+          )
+        )
+      ).subscribe(data => {
+        this.conductores = data;
+      });
+
+      console.log(this.conductores)
+
   }
 
 }
